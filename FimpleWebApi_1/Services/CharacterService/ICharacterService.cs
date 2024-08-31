@@ -2,16 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FimpleWebApi_1.Dtos.Character;
 using FimpleWebApi_1.Models;
 
 namespace FimpleWebApi_1.Services.CharacterService
 {
     public interface ICharacterService
     {
-        List<Character> GetAllCharacters();
+        Task<ServiceResponse<List<CharacterResponseDto>>> GetAllCharacters(int userId);
 
-        Character GetCharacterById(int id);
+        Task<ServiceResponse<CharacterResponseDto>> GetCharacterById(int id);
 
-        List<Character> AddCharacter(Character newCharacter);
+        Task<ServiceResponse<List<CharacterResponseDto>>> AddCharacter(CharacterRequestDto newCharacter);
+
+        Task<ServiceResponse<CharacterResponseDto>> UpdateCharacter(UpdateCharacterDto updateCharacterDto);
+
+        Task<ServiceResponse<List<CharacterResponseDto>>> DeleteCharacterById(int id);
+
     }
 }

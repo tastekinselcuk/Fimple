@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FimpleMVC_1", "FimpleMVC_1\FimpleMVC_1.csproj", "{BBA7813E-4C42-4B83-BFDB-753ADBD6C982}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fimple", "FimpleWebApi_1\fimple.csproj", "{8A67E129-7F58-441B-B182-98A47BE46A0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBA7813E-4C42-4B83-BFDB-753ADBD6C982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA7813E-4C42-4B83-BFDB-753ADBD6C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA7813E-4C42-4B83-BFDB-753ADBD6C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA7813E-4C42-4B83-BFDB-753ADBD6C982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A67E129-7F58-441B-B182-98A47BE46A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A67E129-7F58-441B-B182-98A47BE46A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A67E129-7F58-441B-B182-98A47BE46A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A67E129-7F58-441B-B182-98A47BE46A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24329C1B-2359-4D82-8F60-F3B930978E5F}
+	EndGlobalSection
+EndGlobal
