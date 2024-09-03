@@ -1,3 +1,4 @@
+<!-- This file contains the project configuration and dependencies. -->
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>

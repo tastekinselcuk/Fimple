@@ -9,7 +9,7 @@ namespace FimpleWebApi_1.Services.CharacterService
 {
     public interface ICharacterService
     {
-        Task<ServiceResponse<List<CharacterResponseDto>>> GetAllCharacters(int userId);
+        Task<ServiceResponse<List<CharacterResponseDto>>> GetAllCharacters();
 
         Task<ServiceResponse<CharacterResponseDto>> GetCharacterById(int id);
 
@@ -18,6 +18,8 @@ namespace FimpleWebApi_1.Services.CharacterService
         Task<ServiceResponse<CharacterResponseDto>> UpdateCharacter(UpdateCharacterDto updateCharacterDto);
 
         Task<ServiceResponse<List<CharacterResponseDto>>> DeleteCharacterById(int id);
+        Task<ServiceResponse<CharacterResponseDto>> AddCharacterSkill(CharacterSkillRequestDto newCharacterSkill);
+
 
     }
 }

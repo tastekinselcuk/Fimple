@@ -25,13 +25,11 @@ namespace FimpleWebApi_1.Controllers
         
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<CharacterResponseDto>>>> Get(){
-            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            return Ok(await _characterService.GetAllCharacters(userId));
+            return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("GetById/{id}")]
         public async Task<ActionResult<ServiceResponse<List<CharacterResponseDto>>>> GetCharacterById(int id){
-
             return Ok(await _characterService.GetCharacterById(id));
         }
         
@@ -55,6 +53,12 @@ namespace FimpleWebApi_1.Controllers
             if(response.Data is null)
                 return NotFound(response);
             return Ok(response);
+        }
+
+        [HttpPost("skill")]
+        public async Task<ActionResult<ServiceResponse<CharacterResponseDto>>> AddCharacterSkill(CharacterSkillRequestDto newCharacterSkill)
+        {
+            return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
         }
         
     }
