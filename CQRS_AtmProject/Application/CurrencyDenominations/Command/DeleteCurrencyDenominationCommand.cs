@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Application.CurrencyDenominations.Command
+namespace CQRS_AtmProject.Application.CurrencyDenominations.Command
 {
     public class DeleteCurrencyDenominationCommand : IRequest<ServiceResponse<bool>>
     {

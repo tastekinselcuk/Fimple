@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace UserProductManagementAPI.Migrations
+namespace CQRS_AtmProject.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

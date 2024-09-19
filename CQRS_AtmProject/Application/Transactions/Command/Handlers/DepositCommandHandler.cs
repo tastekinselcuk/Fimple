@@ -3,15 +3,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos;
-using UserProductManagementAPI.Application.Dtos.Atms;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Domain.Enums;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.Atms;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.CurrencyDenominations;
+using CQRS_AtmProject.Application.Dtos;
+using CQRS_AtmProject.Application.Dtos.Atms;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Domain.Enums;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.Atms;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.CurrencyDenominations;
 
-namespace UserProductManagementAPI.Application.Atms.Commands.Handlers
+namespace CQRS_AtmProject.Application.Transactions.Commands.Handlers
 {
     public class DepositCommandHandler : IRequestHandler<DepositCommand, ServiceResponse<DepositResponseDto>>
     {
@@ -36,20 +36,37 @@ namespace UserProductManagementAPI.Application.Atms.Commands.Handlers
                     Message = "ATM not found"
                 };
 
-            if (!Enum.TryParse(request.DenominationType, out DenominationType denominationType))
+            // DenominationType doğrulaması
+            if (!Enum.TryParse(request.DenominationType, out DenominationType denominationType) || 
+                !Enum.IsDefined(typeof(DenominationType), denominationType))
+            {
                 return new ServiceResponse<DepositResponseDto>
                 {
                     Success = false,
                     Message = "Invalid DenominationType provided"
                 };
+            }
 
-            if (!Enum.TryParse(request.CurrencyType, out CurrencyType currencyType))
+            // CurrencyType doğrulaması
+            if (!Enum.TryParse(request.CurrencyType, out CurrencyType currencyType) || 
+                !Enum.IsDefined(typeof(CurrencyType), currencyType))
+            {
                 return new ServiceResponse<DepositResponseDto>
                 {
                     Success = false,
                     Message = "Invalid CurrencyType provided"
                 };
+            }
 
+            // Quantity'nin geçerli olup olmadığını kontrol ettik
+            if (request.Quantity <= 0)
+                return new ServiceResponse<DepositResponseDto>
+                {
+                    Success = false,
+                    Message = "The quantity must be greater than 0."
+                };
+
+            // Para yatırmak için uygun kasetleri filtreledik
             var cassette = atm.Cassettes?
                 .FirstOrDefault(c => c.ExistQuantity + request.Quantity <= c.QuantityCapacity &&
                     (!c.IsForeignCurrencyOnly || (currencyType == CurrencyType.USD ||
@@ -66,19 +83,21 @@ namespace UserProductManagementAPI.Application.Atms.Commands.Handlers
                     Message = "Unable to provide deposit service at this time. Please try again later."
                 };
 
+            // Kasetin mevcut miktarını güncelle
             cassette.ExistQuantity += request.Quantity;
 
-            var currencyDenomination = cassette.CurrencyDenominations
+            // CurrencyDenomination'u güncelle
+            var currencyDenomination = cassette.CurrencyDenominations?
                 .FirstOrDefault(d => d.DenominationType == denominationType && d.CurrencyType == currencyType);
 
             if (currencyDenomination != null)
             {
                 currencyDenomination.Quantity += request.Quantity;
-                _currencyDenominationRepository.UpdateCurrencyDenominationAsync(currencyDenomination);
+                await _currencyDenominationRepository.UpdateCurrencyDenominationAsync(currencyDenomination);
             }
 
-            _atmRepository.UpdateAtmAsync(atm);
-            _currencyDenominationRepository.UpdateCurrencyDenominationAsync(currencyDenomination);
+            await _atmRepository.UpdateAtmAsync(atm);
+            await _currencyDenominationRepository.UpdateCurrencyDenominationAsync(currencyDenomination);
 
             await _atmRepository.SaveChangesAsync();
             await _currencyDenominationRepository.SaveChangesAsync();

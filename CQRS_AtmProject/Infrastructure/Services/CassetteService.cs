@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.Cassettes.Command;
-using UserProductManagementAPI.Application.Cassettes.Query;
-using UserProductManagementAPI.Application.Dtos.Cassettes;
-using UserProductManagementAPI.Domain.Enums;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.Cassettes;
+using CQRS_AtmProject.Application.Cassettes.Command;
+using CQRS_AtmProject.Application.Cassettes.Query;
+using CQRS_AtmProject.Application.Dtos.Cassettes;
+using CQRS_AtmProject.Domain.Enums;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.Cassettes;
 
-namespace UserProductManagementAPI.Infrastructure.Services
+namespace CQRS_AtmProject.Infrastructure.Services
 {
     public class CassetteService : ICassetteService
     {

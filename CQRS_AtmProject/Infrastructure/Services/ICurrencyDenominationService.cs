@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Infrastructure.Services
+namespace CQRS_AtmProject.Infrastructure.Services
 {
     public interface ICurrencyDenominationService
     {

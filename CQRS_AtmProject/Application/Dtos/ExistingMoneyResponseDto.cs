@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Domain.Enums;
+using CQRS_AtmProject.Domain.Enums;
 
-namespace UserProductManagementAPI.Application.Dtos
+namespace CQRS_AtmProject.Application.Dtos
 {
     public class ExistingMoneyResponseDto
     {
-    public DenominationType DenominationType { get; set; }
-    public CurrencyType CurrencyType { get; set; }
+    public string? DenominationType { get; set; }
+    public string? CurrencyType { get; set; }
     public int Quantity { get; set; }
     }
 }

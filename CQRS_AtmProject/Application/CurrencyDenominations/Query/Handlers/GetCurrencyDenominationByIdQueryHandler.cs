@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.CurrencyDenominations;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.CurrencyDenominations;
 
-namespace UserProductManagementAPI.Application.CurrencyDenominations.Query.Handlers
+namespace CQRS_AtmProject.Application.CurrencyDenominations.Query.Handlers
 {
     public class GetCurrencyDenominationByIdQueryHandler : IRequestHandler<GetCurrencyDenominationByIdQuery, ServiceResponse<CurrencyDenominationDto>>
     {

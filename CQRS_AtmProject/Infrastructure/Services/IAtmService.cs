@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Application.Dtos;
-using UserProductManagementAPI.Application.Dtos.Atms;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos;
+using CQRS_AtmProject.Application.Dtos.Atms;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Infrastructure.Services
+namespace CQRS_AtmProject.Infrastructure.Services
 {
     public interface IAtmService
     {
@@ -14,12 +14,6 @@ namespace UserProductManagementAPI.Infrastructure.Services
         Task<ServiceResponse<List<AtmDto>>> GetAllAtmsAsync();
         Task<ServiceResponse<AtmDto>> UpdateAtmAsync(int id, UpdateAtmDto updateAtmDto);
         Task<ServiceResponse<bool>> DeleteAtmAsync(int id);
-        //other
-        Task<ServiceResponse<DepositResponseDto>> Deposit(DepositRequestDto depositRequestDto);
-        Task<ServiceResponse<WithdrawalResponseDto>> Withdrawal(WithdrawalRequestDto withdrawalRequestDto);
-        Task<ServiceResponse<ExistingMoneyResponseDto>> ExistingMoney();
-        Task<ServiceResponse<decimal>> GetAtmAmountById();
-
         
     }
 }

@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.Cassettes;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.Cassettes;
+using CQRS_AtmProject.Application.Dtos.Cassettes;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.Cassettes;
 
-namespace UserProductManagementAPI.Application.Cassettes.Query.Handlers
+namespace CQRS_AtmProject.Application.Cassettes.Query.Handlers
 {
     public class GetAllCassetteQueryHandler : IRequestHandler<GetAllCassetteQuery, ServiceResponse<List<CassetteDto>>>
     {

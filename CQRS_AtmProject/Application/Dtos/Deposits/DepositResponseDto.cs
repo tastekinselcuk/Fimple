@@ -1,4 +1,4 @@
-namespace UserProductManagementAPI.Application.Dtos
+namespace CQRS_AtmProject.Application.Dtos
 {
     public class DepositResponseDto
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.Atms;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos.Atms;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Application.Atms.Commands
+namespace CQRS_AtmProject.Application.Atms.Commands
 {
     public class UpdateAtmCommand : IRequest<ServiceResponse<AtmDto>>
     {

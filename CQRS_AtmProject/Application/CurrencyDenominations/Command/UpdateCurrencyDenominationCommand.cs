@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Domain.Enums;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Domain.Enums;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Application.CurrencyDenominations.Command
+namespace CQRS_AtmProject.Application.CurrencyDenominations.Command
 {
     public class UpdateCurrencyDenominationCommand : IRequest<ServiceResponse<CurrencyDenominationDto>>
     {

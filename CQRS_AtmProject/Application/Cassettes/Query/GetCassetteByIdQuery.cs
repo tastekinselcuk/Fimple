@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.Cassettes;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos.Cassettes;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Application.Cassettes.Query
+namespace CQRS_AtmProject.Application.Cassettes.Query
 {
     public class GetCassetteByIdQuery : IRequest<ServiceResponse<CassetteDto>>
     {

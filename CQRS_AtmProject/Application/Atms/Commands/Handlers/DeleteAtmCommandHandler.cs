@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.Atms;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.Atms;
 
-namespace UserProductManagementAPI.Application.Atms.Commands.Handlers
+namespace CQRS_AtmProject.Application.Atms.Commands.Handlers
 {
     public class DeleteAtmCommandHandler : IRequestHandler<DeleteAtmCommand, ServiceResponse<bool>>
     {

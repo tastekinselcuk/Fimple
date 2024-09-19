@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using UserProductManagementAPI.Domain.Enums;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Domain.Enums;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Data
+namespace CQRS_AtmProject.Data
 {
     public class AppDbContext : DbContext
     {
@@ -25,13 +25,11 @@ namespace UserProductManagementAPI.Data
                 .HasMany(a => a.Cassettes)
                 .WithOne(c => c.Atm)
                 .HasForeignKey(c => c.AtmId);
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Cassette>()
                 .HasMany(c => c.CurrencyDenominations)
                 .WithOne(d => d.Cassette)
                 .HasForeignKey(d => d.CassetteId);
-            base.OnModelCreating(modelBuilder);
 
             // Seed data for Atm, Cassettes, and CurrencyDenomination
             modelBuilder.Entity<Atm>().HasData(new Atm
@@ -138,6 +136,7 @@ namespace UserProductManagementAPI.Data
                 new CurrencyDenomination { Id = 27, CassetteId = 5, DenominationType = DenominationType.OneHundred, CurrencyType = CurrencyType.TRY, Quantity = 10 },
                 new CurrencyDenomination { Id = 28, CassetteId = 5, DenominationType = DenominationType.FiveHundred, CurrencyType = CurrencyType.TRY, Quantity = 10 }
             );
+            base.OnModelCreating(modelBuilder);
         }
 
     }

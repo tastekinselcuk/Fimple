@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.CurrencyDenominations.Command;
-using UserProductManagementAPI.Application.CurrencyDenominations.Query;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Domain.Enums;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.CurrencyDenominations.Command;
+using CQRS_AtmProject.Application.CurrencyDenominations.Query;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Domain.Enums;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Infrastructure.Services
+namespace CQRS_AtmProject.Infrastructure.Services
 {
     public class CurrencyDenominationService : ICurrencyDenominationService
     {

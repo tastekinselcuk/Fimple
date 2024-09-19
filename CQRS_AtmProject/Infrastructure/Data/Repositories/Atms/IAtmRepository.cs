@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Infrastructure.Data.Repositories.Atms
+namespace CQRS_AtmProject.Infrastructure.Data.Repositories.Atms
 {
     public interface IAtmRepository
     {
@@ -12,7 +12,6 @@ namespace UserProductManagementAPI.Infrastructure.Data.Repositories.Atms
         Task UpdateAtmAsync(Atm atm);
         Task DeleteAtmAsync(Atm atm);
         Task<List<Atm>> GetAllAtmsAsync();
-        // Task<Atm> GetAtmWithCassetesAsync(int id);
         Task<Atm> GetAtmByIdAsync(int id);
         Task SaveChangesAsync();
 

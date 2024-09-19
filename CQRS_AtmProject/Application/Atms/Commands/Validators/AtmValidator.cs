@@ -3,9 +3,9 @@
 // using System.Linq;
 // using System.Threading.Tasks;
 // using FluentValidation;
-// using UserProductManagementAPI.Domain.Models;
+// using CQRS_AtmProject.Domain.Models;
 
-// namespace UserProductManagementAPI.Application.Atms.Commands.Validators
+// namespace CQRS_AtmProject.Application.Atms.Commands.Validators
 // {
 //     public class AtmValidator : AbstractValidator<Atm>
 //     {

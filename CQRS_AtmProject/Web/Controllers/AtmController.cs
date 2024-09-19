@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Application.Dtos;
-using UserProductManagementAPI.Application.Dtos.Atms;
-using UserProductManagementAPI.Infrastructure.Services;
+using CQRS_AtmProject.Application.Dtos;
+using CQRS_AtmProject.Application.Dtos.Atms;
+using CQRS_AtmProject.Infrastructure.Services;
 
-namespace UserProductManagementAPI.Controllers
+namespace CQRS_AtmProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -42,7 +42,7 @@ namespace UserProductManagementAPI.Controllers
             if (!response.Success)
                 return BadRequest(response.Message);
 
-            return CreatedAtAction(nameof(GetAtmById), new { id = response.Data.Id }, response.Data);
+            return Ok(response.Data);
         }
 
         [HttpPut("{id}")]
@@ -65,31 +65,5 @@ namespace UserProductManagementAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("/deposit")]
-        public async Task<IActionResult> Deposit([FromBody] DepositRequestDto depositRequestDto)
-        {
-            var response = await _atmService.Deposit(depositRequestDto);
-            if (!response.Success)
-                return BadRequest(response.Message);
-
-            return Ok(response.Data);
-        }
-
-        [HttpPost("withdrawal")]
-        public async Task<IActionResult> Withdrawal([FromBody] WithdrawalRequestDto withdrawalRequestDto)
-        {
-            var response = await _atmService.Withdrawal(withdrawalRequestDto);
-            if (!response.Success)
-                return BadRequest(response.Message);
-
-            return Ok(response.Data);
-        }
-
-        [HttpGet("existingmoney")]
-        public async Task<IActionResult> ExistingMoney()
-        {
-            var response = await _atmService.ExistingMoney();
-            return Ok(response.Data);
-        }
     }
 }

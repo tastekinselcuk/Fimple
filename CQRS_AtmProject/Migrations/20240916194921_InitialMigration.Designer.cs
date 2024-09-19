@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserProductManagementAPI.Data;
+using CQRS_AtmProject.Data;
 
 #nullable disable
 
-namespace UserProductManagementAPI.Migrations
+namespace CQRS_AtmProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20240916194921_InitialMigration")]
@@ -24,7 +24,7 @@ namespace UserProductManagementAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.Atm", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.Atm", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace UserProductManagementAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.Cassette", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.Cassette", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +132,7 @@ namespace UserProductManagementAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.CurrencyDenomination", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.CurrencyDenomination", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -385,9 +385,9 @@ namespace UserProductManagementAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.Cassette", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.Cassette", b =>
                 {
-                    b.HasOne("UserProductManagementAPI.Domain.Models.Atm", "Atm")
+                    b.HasOne("CQRS_AtmProject.Domain.Models.Atm", "Atm")
                         .WithMany("Cassettes")
                         .HasForeignKey("AtmId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -396,9 +396,9 @@ namespace UserProductManagementAPI.Migrations
                     b.Navigation("Atm");
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.CurrencyDenomination", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.CurrencyDenomination", b =>
                 {
-                    b.HasOne("UserProductManagementAPI.Domain.Models.Cassette", "Cassette")
+                    b.HasOne("CQRS_AtmProject.Domain.Models.Cassette", "Cassette")
                         .WithMany("CurrencyDenominations")
                         .HasForeignKey("CassetteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -407,12 +407,12 @@ namespace UserProductManagementAPI.Migrations
                     b.Navigation("Cassette");
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.Atm", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.Atm", b =>
                 {
                     b.Navigation("Cassettes");
                 });
 
-            modelBuilder.Entity("UserProductManagementAPI.Domain.Models.Cassette", b =>
+            modelBuilder.Entity("CQRS_AtmProject.Domain.Models.Cassette", b =>
                 {
                     b.Navigation("CurrencyDenominations");
                 });

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using UserProductManagementAPI.Application.Dtos;
-using UserProductManagementAPI.Application.Dtos.Cassettes;
-using UserProductManagementAPI.Infrastructure.Services;
+using CQRS_AtmProject.Application.Dtos;
+using CQRS_AtmProject.Application.Dtos.Cassettes;
+using CQRS_AtmProject.Infrastructure.Services;
 
-namespace UserProductManagementAPI.API.Controllers
+namespace CQRS_AtmProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

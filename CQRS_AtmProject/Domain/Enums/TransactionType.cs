@@ -1,4 +1,4 @@
-namespace UserProductManagementAPI.Domain.Enums
+namespace CQRS_AtmProject.Domain.Enums
 {
     public enum TransactionType
     {

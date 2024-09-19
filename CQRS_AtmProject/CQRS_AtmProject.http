@@ -1,0 +1,6 @@
+@CQRS_AtmProject_HostAddress = http://localhost:5126
+
+GET {{CQRS_AtmProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

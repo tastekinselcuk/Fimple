@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Application.Atms.Commands
+namespace CQRS_AtmProject.Application.Atms.Commands
 {
     public class DeleteAtmCommand : IRequest<ServiceResponse<bool>>
     {

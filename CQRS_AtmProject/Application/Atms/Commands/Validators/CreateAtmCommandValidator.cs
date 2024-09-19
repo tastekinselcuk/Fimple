@@ -3,7 +3,7 @@
 // using System.Linq;
 // using System.Threading.Tasks;
 
-// namespace UserProductManagementAPI.Application.Atms.Commands.Validators
+// namespace CQRS_AtmProject.Application.Atms.Commands.Validators
 // {
 //     public class CreateAtmCommandValidator
 //     {

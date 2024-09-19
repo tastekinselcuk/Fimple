@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UserProductManagementAPI.Domain.Models
+namespace CQRS_AtmProject.Domain.Models
 {
     public class ServiceResponse<T>
     {

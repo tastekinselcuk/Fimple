@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UserProductManagementAPI.Application.Dtos.Cassettes;
-using UserProductManagementAPI.Domain.Models;
+using CQRS_AtmProject.Application.Dtos.Cassettes;
+using CQRS_AtmProject.Domain.Models;
 
-namespace UserProductManagementAPI.Infrastructure.Services
+namespace CQRS_AtmProject.Infrastructure.Services
 {
     public interface ICassetteService
     {

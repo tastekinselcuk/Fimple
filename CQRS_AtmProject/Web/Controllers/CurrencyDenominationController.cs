@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using UserProductManagementAPI.Application.Dtos.CurrencyDenominations;
-using UserProductManagementAPI.Infrastructure.Services;
+using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Infrastructure.Services;
 
-namespace UserProductManagementAPI.Controllers
+namespace CQRS_AtmProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -21,7 +21,7 @@ namespace UserProductManagementAPI.Controllers
             var response = await _service.CreateCurrencyDenominationAsync(dto);
             if (response.Success)
             {
-                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response.Data);
+                return Ok(response);
             }
             return BadRequest(response.Message);
         }

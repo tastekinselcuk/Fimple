@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using UserProductManagementAPI.Application.Dtos.Atms;
-using UserProductManagementAPI.Domain.Models;
-using UserProductManagementAPI.Infrastructure.Data.Repositories.Atms;
+using CQRS_AtmProject.Application.Dtos.Atms;
+using CQRS_AtmProject.Domain.Models;
+using CQRS_AtmProject.Infrastructure.Data.Repositories.Atms;
 
-namespace UserProductManagementAPI.Application.Atms.Commands.Handlers
+namespace CQRS_AtmProject.Application.Atms.Commands.Handlers
 {
     public class UpdateAtmCommandHandler : IRequestHandler<UpdateAtmCommand, ServiceResponse<AtmDto>>
     {
