@@ -55,7 +55,7 @@ namespace CQRS_AtmProject.Application.Transactions.Command.Handlers
                 return new ServiceResponse<WithdrawalResponseDto>
                 {
                     Success = false,
-                    Message = "The amount cannot be provided with available banknotes."
+                    Message = "The requested amount must be in multiples of 20, 50, 100, or 500. Please enter a valid amount."
                 };
 
             if (request.Amount <= 0)
@@ -99,12 +99,12 @@ namespace CQRS_AtmProject.Application.Transactions.Command.Handlers
                         int notesAvailable = denomination.Quantity;
                         int notesToWithdraw = Math.Min(notesNeeded, notesAvailable); // Çekilecek banknot sayısını belirle
 
-                        // Çekilecek banknot sayısı varsa
+                        // Çekilecek banknot sayısı varsa güncelle
                         if (notesToWithdraw > 0)
                         {
                             denomination.Quantity -= notesToWithdraw;
-                            cassette.ExistQuantity -= notesToWithdraw * denominationValue; // Kasetin kalan toplam değerini güncelle
-                            remainingAmount -= notesToWithdraw * denominationValue; // Kalan miktarı güncelle
+                            cassette.ExistQuantity -= notesToWithdraw;
+                            remainingAmount -= notesToWithdraw * denominationValue;
 
                             // Çekim detaylarını listeye ekle
                             withdrawalDetails.Add(new WithdrawalDetailDto

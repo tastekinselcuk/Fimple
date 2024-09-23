@@ -9,11 +9,11 @@ namespace CQRS_AtmProject.Infrastructure.Services
     {
         Task<ServiceResponse<List<CassetteDto>>> GetAllCassettesAsync();
         Task<ServiceResponse<CassetteDto>> GetCassetteByIdAsync(int id);
-        Task<ServiceResponse<CassetteDto>> CreateCassetteAsync(CreateCassetteDto createCassetteDto);
-        Task<ServiceResponse<CassetteDto>> UpdateCassetteAsync(UpdateCassetteDto updateCassetteDto);
+        Task<ServiceResponse<CassetteDto>> CreateCassetteAsync(CassetteDto createCassetteDto);
+        Task<ServiceResponse<CassetteDto>> UpdateCassetteAsync(CassetteDto updateCassetteDto);
         Task<ServiceResponse<bool>> DeleteCassetteAsync(int id);
         //other
-        Task<ServiceResponse<decimal>> GetCassetteAmountByCurrencyTypeAndId(int id, string CurrencyType); 
+        // Task<ServiceResponse<decimal>> GetCassetteAmountByCurrencyTypeAndId(int id, string CurrencyType); 
 
     }
 }

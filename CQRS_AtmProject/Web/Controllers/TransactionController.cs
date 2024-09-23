@@ -36,14 +36,28 @@ namespace CQRS_AtmProject.Web.Controllers
             return Ok(response.Data);
         }
 
-        [HttpGet("{cassetteId}")]
-        public async Task<IActionResult> ExistingMoney(int cassetteId)
+        [HttpGet("detailedExistingMoney/{atmId}")]
+        public async Task<IActionResult> DetailedExistingMoney(int atmId)
         {
-            var response = await _service.ExistingMoney(cassetteId);
+            var response = await _service.DetailedExistingMoneyasync(atmId);
+            if (!response.Success)
+                return NotFound(response.Message);
+
             return Ok(response.Data);
         }
 
-        [HttpPost("reset-atm/{atmId}")]
+        [HttpGet("existingMoney/{atmId}")]
+        public async Task<IActionResult> ExistingMoney(int atmId)
+        {
+            var response = await _service.ExistingAtmMoney(atmId);
+            if (!response.Success)
+                return NotFound(response.Message);
+
+            return Ok(response.Data);
+        }
+
+
+        [HttpPost("resetAtm/{atmId}")]
         public async Task<IActionResult> ResetAtm(int atmId)
         {
             var response = await _service.ResetAtm(atmId);

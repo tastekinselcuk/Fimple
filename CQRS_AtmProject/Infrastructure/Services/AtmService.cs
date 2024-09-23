@@ -48,7 +48,7 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return atm;
         }
 
-        public async Task<ServiceResponse<AtmDto>> CreateAtmAsync(CreateAtmDto createAtmDto)
+        public async Task<ServiceResponse<AtmDto>> CreateAtmAsync(AtmDto createAtmDto)
         {
             var command = _mapper.Map<CreateAtmCommand>(createAtmDto);
             var result = await _mediator.Send(command);
@@ -56,7 +56,7 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return result;
         }
 
-        public async Task<ServiceResponse<AtmDto>> UpdateAtmAsync(int id, UpdateAtmDto updateAtmDto)
+        public async Task<ServiceResponse<AtmDto>> UpdateAtmAsync(int id, AtmDto updateAtmDto)
         {
             var command = _mapper.Map<UpdateAtmCommand>(updateAtmDto);
             var result = await _mediator.Send(command);

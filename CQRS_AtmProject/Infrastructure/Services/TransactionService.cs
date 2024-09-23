@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CQRS_AtmProject.Application.Atms.Queries;
 using CQRS_AtmProject.Application.Dtos;
 using CQRS_AtmProject.Application.Dtos.CurrencyDenominations;
+using CQRS_AtmProject.Application.Dtos.ExistingMoney;
 using CQRS_AtmProject.Application.Transactions.Command;
 using CQRS_AtmProject.Application.Transactions.Commands;
 using CQRS_AtmProject.Application.Transactions.Query;
@@ -44,23 +46,26 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return result;
         }
 
-        public async Task<ServiceResponse<List<CurrencyDenominationDto>>> ExistingMoney(int cassetteId)
+        public async Task<ServiceResponse<List<ExistingMoneyDto>>> DetailedExistingMoneyasync(int atmId)
         {
-            var command = _mapper.Map<ExistingMoneyQuery>(cassetteId);
+            var command = new DetailedExistingAtmMoneyQuery { AtmId = atmId };
             var result = await _mediator.Send(command);
             
             return result;
         }
 
-        public Task GetAtmCassetteSettings()
+        public async Task<ServiceResponse<MoneyTotalsDto>> ExistingAtmMoney(int atmId)
         {
-            throw new NotImplementedException();
+            var command = new ExistingMoneyQuery { AtmId = atmId };
+            var result = await _mediator.Send(command);
+            
+            return result;
         }
 
-        public Task<ServiceResponse<decimal>> GetAtmAmountById()
-        {
-            throw new NotImplementedException();
-        }
+        // public Task<ServiceResponse<decimal>> GetAtmAmountById()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public async Task<ServiceResponse<bool>> ResetAtm(int atmId)
         {

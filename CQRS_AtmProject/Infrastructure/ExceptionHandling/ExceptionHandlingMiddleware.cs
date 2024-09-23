@@ -20,11 +20,11 @@ public class ExceptionHandlingMiddleware
     {
         try
         {
-            await _next(httpContext); // request'i devam ettir
+            await _next(httpContext);
         }
         catch (Exception ex)
         {
-            await HandleExceptionAsync(httpContext, ex); // exception fırlatılırsa yakala
+            await HandleExceptionAsync(httpContext, ex);
         }
     }
 

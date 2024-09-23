@@ -18,7 +18,7 @@ namespace CQRS_AtmProject.API.Controllers
             _cassetteService = cassetteService;
         }
 
-        [HttpGet]
+        [HttpGet("getAllCassettes")]
         public async Task<IActionResult> GetAllCassettes()
         {
             var response = await _cassetteService.GetAllCassettesAsync();
@@ -27,7 +27,7 @@ namespace CQRS_AtmProject.API.Controllers
             return BadRequest(response.Message);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getCassetteById/{id}")]
         public async Task<IActionResult> GetCassetteById(int id)
         {
             var response = await _cassetteService.GetCassetteByIdAsync(id);
@@ -37,7 +37,7 @@ namespace CQRS_AtmProject.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCassette([FromBody] CreateCassetteDto createCassetteDto)
+        public async Task<IActionResult> CreateCassette([FromBody] CassetteDto createCassetteDto)
         {
             var response = await _cassetteService.CreateCassetteAsync(createCassetteDto);
             if (response.Success)
@@ -46,7 +46,7 @@ namespace CQRS_AtmProject.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCassette([FromBody] UpdateCassetteDto updateCassetteDto)
+        public async Task<IActionResult> UpdateCassette([FromBody] CassetteDto updateCassetteDto)
         {
             var response = await _cassetteService.UpdateCassetteAsync(updateCassetteDto);
             if (response.Success)

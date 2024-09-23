@@ -9,10 +9,10 @@ namespace CQRS_AtmProject.Infrastructure.Services
 {
     public interface ICurrencyDenominationService
     {
-        Task<ServiceResponse<CurrencyDenominationDto>> CreateCurrencyDenominationAsync(CreateCurrencyDenominationDto dto);
+        Task<ServiceResponse<CurrencyDenominationDto>> CreateCurrencyDenominationAsync(CurrencyDenominationDto dto);
         Task<ServiceResponse<CurrencyDenominationDto>> GetCurrencyDenominationByIdAsync(int id);
         Task<ServiceResponse<List<CurrencyDenominationDto>>> GetAllCurrencyDenominationsAsync();
-        Task<ServiceResponse<CurrencyDenominationDto>> UpdateCurrencyDenominationAsync(int id, UpdateCurrencyDenominationDto updateDto);
+        Task<ServiceResponse<CurrencyDenominationDto>> UpdateCurrencyDenominationAsync(int id, CurrencyDenominationDto updateDto);
         Task<ServiceResponse<bool>> DeleteCurrencyDenominationAsync(int id);
     }
 }

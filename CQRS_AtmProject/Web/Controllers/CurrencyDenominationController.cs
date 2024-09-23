@@ -6,17 +6,17 @@ namespace CQRS_AtmProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CurrencyDenominationsController : ControllerBase
+    public class CurrencyDenominationController : ControllerBase
     {
         private readonly ICurrencyDenominationService _service;
 
-        public CurrencyDenominationsController(ICurrencyDenominationService service)
+        public CurrencyDenominationController(ICurrencyDenominationService service)
         {
             _service = service;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCurrencyDenominationDto dto)
+        [HttpPost("createCurrencyDenomination")]
+        public async Task<IActionResult> Create([FromBody] CurrencyDenominationDto dto)
         {
             var response = await _service.CreateCurrencyDenominationAsync(dto);
             if (response.Success)
@@ -26,7 +26,7 @@ namespace CQRS_AtmProject.Controllers
             return BadRequest(response.Message);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteCurrencyDenomination/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _service.DeleteCurrencyDenominationAsync(id);
@@ -37,14 +37,14 @@ namespace CQRS_AtmProject.Controllers
             return NotFound(response.Message);
         }
 
-        [HttpGet]
+        [HttpGet("getAllCurrencyDenominations")]
         public async Task<IActionResult> GetAll()
         {
             var response = await _service.GetAllCurrencyDenominationsAsync();
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getCurrencyDenominationById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var response = await _service.GetCurrencyDenominationByIdAsync(id);
@@ -55,8 +55,8 @@ namespace CQRS_AtmProject.Controllers
             return NotFound(response.Message);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateCurrencyDenominationDto updateDto)
+        [HttpPut("updateCurrencyDenomination/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CurrencyDenominationDto updateDto)
         {
             var response = await _service.UpdateCurrencyDenominationAsync(id, updateDto);
             if (response.Success)

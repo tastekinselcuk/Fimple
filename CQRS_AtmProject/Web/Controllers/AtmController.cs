@@ -18,7 +18,7 @@ namespace CQRS_AtmProject.Controllers
             _atmService = atmService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getAtmById/{id}")]
         public async Task<IActionResult> GetAtmById(int id)
         {
             var response = await _atmService.GetAtmByIdAsync(id);
@@ -28,15 +28,15 @@ namespace CQRS_AtmProject.Controllers
             return Ok(response.Data);
         }
 
-        [HttpGet]
+        [HttpGet("getAllAtms")]
         public async Task<IActionResult> GetAllAtms()
         {
             var response = await _atmService.GetAllAtmsAsync();
             return Ok(response.Data);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateAtm([FromBody] CreateAtmDto createAtmDto)
+        [HttpPost("createAtm")]
+        public async Task<IActionResult> CreateAtm([FromBody] AtmDto createAtmDto)
         {
             var response = await _atmService.CreateAtmAsync(createAtmDto);
             if (!response.Success)
@@ -45,8 +45,8 @@ namespace CQRS_AtmProject.Controllers
             return Ok(response.Data);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAtm(int id, [FromBody] UpdateAtmDto updateAtmDto)
+        [HttpPut("updateAtm/{id}")]
+        public async Task<IActionResult> UpdateAtm(int id, [FromBody] AtmDto updateAtmDto)
         {
             var response = await _atmService.UpdateAtmAsync(id, updateAtmDto);
             if (!response.Success)
@@ -55,7 +55,7 @@ namespace CQRS_AtmProject.Controllers
             return Ok(response.Data);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteAtm/{id}")]
         public async Task<IActionResult> DeleteAtm(int id)
         {
             var response = await _atmService.DeleteAtmAsync(id);

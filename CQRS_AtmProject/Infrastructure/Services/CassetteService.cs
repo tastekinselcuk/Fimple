@@ -39,7 +39,7 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return cassette;
         }
 
-        public async Task<ServiceResponse<CassetteDto>> CreateCassetteAsync(CreateCassetteDto createCassetteDto)
+        public async Task<ServiceResponse<CassetteDto>> CreateCassetteAsync(CassetteDto createCassetteDto)
         {
             var command = _mapper.Map<CreateCassetteCommand>(createCassetteDto);
             var result = await _mediator.Send(command);
@@ -47,7 +47,7 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return result;
         }
 
-        public async Task<ServiceResponse<CassetteDto>> UpdateCassetteAsync(UpdateCassetteDto updateCassetteDto)
+        public async Task<ServiceResponse<CassetteDto>> UpdateCassetteAsync(CassetteDto updateCassetteDto)
         {
             var command = _mapper.Map<UpdateCassetteCommand>(updateCassetteDto);
             var result = await _mediator.Send(command);
@@ -64,29 +64,29 @@ namespace CQRS_AtmProject.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResponse<decimal>> GetCassetteAmountByCurrencyTypeAndId(int id, string currencyType)
-        {
-            var cassette = await _cassetteRepository.GetCassetteByIdAsync(id);
-            if (cassette == null)
-            {
-                throw new ArgumentException("Cassette not found");
-            }
+        // public async Task<ServiceResponse<decimal>> GetCassetteAmountByCurrencyTypeAndId(int id, string currencyType)
+        // {
+        //     var cassette = await _cassetteRepository.GetCassetteByIdAsync(id);
+        //     if (cassette == null)
+        //     {
+        //         throw new ArgumentException("Cassette not found");
+        //     }
 
-            if (!Enum.TryParse<CurrencyType>(currencyType, true, out var parsedCurrencyType))
-            {
-                throw new ArgumentException("Invalid currency type");
-            }
+        //     if (!Enum.TryParse<CurrencyType>(currencyType, true, out var parsedCurrencyType))
+        //     {
+        //         throw new ArgumentException("Invalid currency type");
+        //     }
 
-            var totalAmount = cassette.CurrencyDenominations
-                                    .Where(c => c.CurrencyType == parsedCurrencyType)
-                                    .Sum(c => c.Quantity * (int)c.DenominationType);
+        //     var totalAmount = cassette.CurrencyDenominations
+        //                             .Where(c => c.CurrencyType == parsedCurrencyType)
+        //                             .Sum(c => c.Quantity * (int)c.DenominationType);
 
-            return new ServiceResponse<decimal>
-            {
-                Success = true,
-                Data = totalAmount,
-                Message = "Cassette amount calculated for specific currency type."
-            };
-        }
+        //     return new ServiceResponse<decimal>
+        //     {
+        //         Success = true,
+        //         Data = totalAmount,
+        //         Message = "Cassette amount calculated for specific currency type."
+        //     };
+        // }
     }
 }

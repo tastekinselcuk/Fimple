@@ -32,7 +32,6 @@ namespace CQRS_AtmProject.Application.Cassettes.Command.Handlers
                 };
             }
 
-            // Update cassette properties
             cassette.QuantityCapacity = request.QuantityCapacity;
             cassette.IsDepositOnly = request.IsDepositOnly;
             cassette.IsForeignCurrencyOnly = request.IsForeignCurrencyOnly;

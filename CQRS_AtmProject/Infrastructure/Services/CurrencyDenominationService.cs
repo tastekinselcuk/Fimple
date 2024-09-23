@@ -21,7 +21,7 @@ namespace CQRS_AtmProject.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<CurrencyDenominationDto>> CreateCurrencyDenominationAsync(CreateCurrencyDenominationDto dto)
+        public async Task<ServiceResponse<CurrencyDenominationDto>> CreateCurrencyDenominationAsync(CurrencyDenominationDto dto)
         {
             // Convert string to enum
             if (!Enum.TryParse(dto.DenominationType, true, out DenominationType denominationType))
@@ -53,9 +53,8 @@ namespace CQRS_AtmProject.Infrastructure.Services
             return result;
         }
 
-        public async Task<ServiceResponse<CurrencyDenominationDto>> UpdateCurrencyDenominationAsync(int id, UpdateCurrencyDenominationDto updateDto)
+        public async Task<ServiceResponse<CurrencyDenominationDto>> UpdateCurrencyDenominationAsync(int id, CurrencyDenominationDto updateDto)
         {
-            // Convert string to enum
             if (!Enum.TryParse(updateDto.DenominationType, true, out DenominationType denominationType))
             {
                 return new ServiceResponse<CurrencyDenominationDto>
